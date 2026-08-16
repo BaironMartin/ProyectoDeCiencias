@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantas Medicinales - Proyecto de Ciencia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🌿 PlantasMedicinales</div>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#plantas" class="nav-link">Plantas</a></li>
+                <li><a href="#integrantes" class="nav-link">Integrantes</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Descubre el Poder de las <span class="highlight">Plantas Medicinales</span></h1>
+            <p class="hero-subtitle">Un viaje interactivo por la naturaleza curativa que nos rodea</p>
+            <button class="cta-button" onclick="scrollToPlants()">Explorar Plantas</button>
+        </div>
+        <div class="floating-leaves">
+            <div class="leaf leaf-1">🍃</div>
+            <div class="leaf leaf-2">🌿</div>
+            <div class="leaf leaf-3">🍂</div>
+            <div class="leaf leaf-4">🌱</div>
+        </div>
+    </section>
+
+    <!-- Sección de Plantas Interactiva -->
+    <section id="plantas" class="plants-section">
+        <h2 class="section-title">Nuestras Plantas Medicinales</h2>
+        <p class="section-subtitle">Haz clic en cada planta para descubrir sus propiedades</p>
+        
+        <div class="plants-grid">
+            <!-- Planta 1: Aloe Vera -->
+            <div class="plant-card" data-plant="aloe">
+                <div class="plant-image">
+                    <div class="plant-icon">🌵</div>
+                    <div class="plant-overlay">
+                        <span class="overlay-text">Ver más</span>
+                    </div>
+                </div>
+                <div class="plant-info">
+                    <h3>Aloe Vera</h3>
+                    <p class="plant-name-cientifico">Aloe barbadensis miller</p>
+                    <p class="plant-short-desc">Conocida como la planta de la inmortalidad</p>
+                </div>
+            </div>
+
+            <!-- Planta 2: Manzanilla -->
+            <div class="plant-card" data-plant="manzanilla">
+                <div class="plant-image">
+                    <div class="plant-icon">🼼</div>
+                    <div class="plant-overlay">
+                        <span class="overlay-text">Ver más</span>
+                    </div>
+                </div>
+                <div class="plant-info">
+                    <h3>Manzanilla</h3>
+                    <p class="plant-name-cientifico">Matricaria chamomilla</p>
+                    <p class="plant-short-desc">Calmante natural y antiinflamatorio</p>
+                </div>
+            </div>
+
+            <!-- Planta 3: Menta -->
+            <div class="plant-card" data-plant="menta">
+                <div class="plant-image">
+                    <div class="plant-icon">🌿</div>
+                    <div class="plant-overlay">
+                        <span class="overlay-text">Ver más</span>
+                    </div>
+                </div>
+                <div class="plant-info">
+                    <h3>Menta</h3>
+                    <p class="plant-name-cientifico">Mentha piperita</p>
+                    <p class="plant-short-desc">Refrescante y digestiva</p>
+                </div>
+            </div>
+
+            <!-- Planta 4: Lavanda -->
+            <div class="plant-card" data-plant="lavanda">
+                <div class="plant-image">
+                    <div class="plant-icon">💜</div>
+                    <div class="plant-overlay">
+                        <span class="overlay-text">Ver más</span>
+                    </div>
+                </div>
+                <div class="plant-info">
+                    <h3>Lavanda</h3>
+                    <p class="plant-name-cientifico">Lavandula angustifolia</p>
+                    <p class="plant-short-desc">Relajante y aromática</p>
+                </div>
+            </div>
+
+            <!-- Planta 5: Eucalipto -->
+            <div class="plant-card" data-plant="eucalipto">
+                <div class="plant-image">
+                    <div class="plant-icon">🌳</div>
+                    <div class="plant-overlay">
+                        <span class="overlay-text">Ver más</span>
+                    </div>
+                </div>
+                <div class="plant-info">
+                    <h3>Eucalipto</h3>
+                    <p class="plant-name-cientifico">Eucalyptus globulus</p>
+                    <p class="plant-short-desc">Descongestionante respiratorio</p>
+                </div>
+            </div>
+
+            <!-- Planta 6: Romero -->
+            <div class="plant-card" data-plant="romero">
+                <div class="plant-image">
+                    <div class="plant-icon">🌿</div>
+                    <div class="plant-overlay">
+                        <span class="overlay-text">Ver más</span>
+                    </div>
+                </div>
+                <div class="plant-info">
+                    <h3>Romero</h3>
+                    <p class="plant-name-cientifico">Rosmarinus officinalis</p>
+                    <p class="plant-short-desc">Estimulante y antioxidante</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Información de Planta -->
+    <div id="plantModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">🌵</div>
+                <h2 id="modalTitle">Aloe Vera</h2>
+                <p class="modal-cientifico" id="modalCientifico">Aloe barbadensis miller</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📖 Descripción</h3>
+                    <p id="modalDescription">Descripción detallada de la planta...</p>
+                </div>
+                <div class="modal-section">
+                    <h3>💊 Propiedades Medicinales</h3>
+                    <ul id="modalProperties" class="properties-list">
+                        <li>Propiedad 1</li>
+                        <li>Propiedad 2</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3>☕ Usos Comunes</h3>
+                    <ul id="modalUses" class="uses-list">
+                        <li>Uso 1</li>
+                        <li>Uso 2</li>
+                    </ul>
+                </div>
+                <div class="modal-section">
+                    <h3>⚠️ Precauciones</h3>
+                    <p id="modalPrecautions">Información de precaución...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Integrantes -->
+    <section id="integrantes" class="team-section">
+        <h2 class="section-title">Integrantes del Proyecto</h2>
+        <p class="section-subtitle">Conoce al equipo detrás de esta investigación</p>
+        
+        <div class="team-container">
+            <div class="team-member member-1">
+                <div class="member-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>Integrante 1</h3>
+                <p class="member-role">Investigador Principal</p>
+                <p class="member-desc">Encargado de la investigación de propiedades medicinales y documentación científica.</p>
+                <div class="member-interests">
+                    <span class="interest-tag">🔬 Botánica</span>
+                    <span class="interest-tag">📚 Investigación</span>
+                </div>
+            </div>
+            
+            <div class="team-member member-2">
+                <div class="member-avatar">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <h3>Integrante 2</h3>
+                <p class="member-role">Co-Investigador</p>
+                <p class="member-desc">Responsable del análisis de usos tradicionales y aplicaciones prácticas.</p>
+                <div class="member-interests">
+                    <span class="interest-tag">🌱 Medicina Natural</span>
+                    <span class="interest-tag">💡 Innovación</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="contact-section">
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-subtitle">¿Tienes preguntas sobre nuestro proyecto?</p>
+        
+        <div class="contact-container">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar Mensaje</button>
+            </form>
+            
+            <div class="contact-info">
+                <div class="info-item">
+                    <span class="info-icon">📧</span>
+                    <p>proyecto.plantasmedicinales@email.com</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <p>Instituto de Ciencias - Laboratorio de Botánica</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📅</span>
+                    <p>Proyecto presentado 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Plantas Medicinales - Proyecto de Ciencia. Todos los derechos reservados.</p>
+        <p class="footer-note">Hecho con 💚 por nuestros integrantes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
