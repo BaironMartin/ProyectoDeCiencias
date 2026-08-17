@@ -125,8 +125,186 @@ const plantData = {
             'Antioxidante natural en alimentos'
         ],
         precautions: 'No recomendado en embarazo. Puede aumentar la presión arterial en algunas personas. Las personas con epilepsia deben consultar antes de usarlo medicinalmente.'
+    },
+    jengibre: {
+        icon: '🫚',
+        title: 'Jengibre',
+        cientifico: 'Zingiber officinale',
+        description: 'El jengibre es una planta tropical cuya raíz ha sido utilizada durante miles de años en la medicina tradicional asiática. Es conocido por su sabor picante y sus potentes propiedades medicinales.',
+        properties: [
+            'Antiinflamatorio natural',
+            'Digestivo y antiemético',
+            'Antioxidante',
+            'Analgésico',
+            'Estimulante del sistema inmune'
+        ],
+        uses: [
+            'Alivio de náuseas y mareos',
+            'Tratamiento de dolores articulares',
+            'Mejora de la digestión',
+            'Reducción de inflamación',
+            'Prevención de resfriados'
+        ],
+        precautions: 'Puede causar acidez en algunas personas. Consultar con médico si se toman anticoagulantes. No exceder 4g diarios.'
+    },
+    ajo: {
+        icon: '🧄',
+        title: 'Ajo',
+        cientifico: 'Allium sativum',
+        description: 'El ajo es una planta bulbosa de la familia de las cebollas. Ha sido valorado desde la antigüedad tanto por su sabor como por sus extraordinarias propiedades medicinales.',
+        properties: [
+            'Antibiótico natural',
+            'Reduce la presión arterial',
+            'Antioxidante potente',
+            'Mejora el sistema inmune',
+            'Antiinflamatorio'
+        ],
+        uses: [
+            'Prevención de enfermedades cardiovasculares',
+            'Tratamiento de infecciones',
+            'Reducción del colesterol',
+            'Refuerzo del sistema inmunológico',
+            'Control de la presión arterial'
+        ],
+        precautions: 'Puede causar mal aliento y olor corporal. Consultar antes de cirugías. Puede interactuar con anticoagulantes.'
+    },
+    calendula: {
+        icon: '🌼',
+        title: 'Caléndula',
+        cientifico: 'Calendula officinalis',
+        description: 'La caléndula es una planta de flores amarillas o naranjas brillantes. Es ampliamente utilizada en productos para el cuidado de la piel por sus propiedades curativas.',
+        properties: [
+            'Cicatrizante',
+            'Antiséptica',
+            'Antiinflamatoria',
+            'Antifúngica',
+            'Regeneradora de tejidos'
+        ],
+        uses: [
+            'Curación de heridas',
+            'Tratamiento de quemaduras',
+            'Alivio de irritaciones de la piel',
+            'Crema para pañalitis',
+            'Tratamiento de eczema'
+        ],
+        precautions: 'Las personas alérgicas a las margaritas pueden tener reacciones. Evitar durante el embarazo.'
+    },
+    tomillo: {
+        icon: '🌿',
+        title: 'Tomillo',
+        cientifico: 'Thymus vulgaris',
+        description: 'El tomillo es una pequeña planta aromática mediterránea. Sus hojas pequeñas pero poderosas han sido utilizadas tanto en cocina como en medicina tradicional.',
+        properties: [
+            'Antiséptico potente',
+            'Expectorante',
+            'Antibacteriano',
+            'Antiespasmódico',
+            'Antioxidante'
+        ],
+        uses: [
+            'Tratamiento de tos y bronquitis',
+            'Gárgaras para dolor de garganta',
+            'Desinfección de heridas',
+            'Alivio de problemas digestivos',
+            'Repelente de insectos'
+        ],
+        precautions: 'No usar aceite esencial sin diluir. Consultar en embarazo. Puede afectar la coagulación.'
+    },
+    ortiga: {
+        icon: '🍃',
+        title: 'Ortiga',
+        cientifico: 'Urtica dioica',
+        description: 'La ortiga es una planta silvestre conocida por sus pelos urticantes. A pesar de su reputación, es una de las plantas medicinales más nutritivas y versátiles.',
+        properties: [
+            'Depurativa',
+            'Remineralizante',
+            'Diurética',
+            'Antianémica',
+            'Antiinflamatoria'
+        ],
+        uses: [
+            'Limpieza de sangre',
+            'Tratamiento de anemia',
+            'Alivio de alergias estacionales',
+            'Fortalecimiento del cabello',
+            'Reducción de dolores articulares'
+        ],
+        precautions: 'Usar guantes al recolectar. Cocinar elimina el efecto urticante. Consultar si hay problemas renales.'
+    },
+    valeriana: {
+        icon: '🌺',
+        title: 'Valeriana',
+        cientifico: 'Valeriana officinalis',
+        description: 'La valeriana es una planta perenne cuyas raíces han sido utilizadas desde la antigua Grecia como sedante natural. Es conocida por su aroma distintivo y efectos calmantes.',
+        properties: [
+            'Sedante natural',
+            'Relajante muscular',
+            'Ansiedad y estrés',
+            'Inductor del sueño',
+            'Antiespasmódico'
+        ],
+        uses: [
+            'Tratamiento del insomnio',
+            'Reducción de la ansiedad',
+            'Alivio de espasmos musculares',
+            'Relajación antes de dormir',
+            'Tratamiento de nerviosismo'
+        ],
+        precautions: 'Puede causar somnolencia. No conducir después de tomarla. Consultar si se toman otros sedantes.'
     }
 };
+
+// Slider automático y controles
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const sliderDots = document.querySelector('.slider-dots');
+
+// Crear dots para el slider
+if (slides.length > 0 && sliderDots) {
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('slider-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        sliderDots.appendChild(dot);
+    });
+}
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        const dots = document.querySelectorAll('.slider-dot');
+        if (dots[i]) dots[i].classList.remove('active');
+    });
+    
+    if (slides[index]) {
+        slides[index].classList.add('active');
+        const dots = document.querySelectorAll('.slider-dot');
+        if (dots[index]) dots[index].classList.add('active');
+    }
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+}
+
+function moveSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    } else if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+    }
+    showSlide(currentSlide);
+}
+
+// Auto-cambio de slide cada 5 segundos
+if (slides.length > 0) {
+    setInterval(() => {
+        moveSlide(1);
+    }, 5000);
+}
 
 // Función para scroll suave a la sección de plantas
 function scrollToPlants() {
@@ -210,28 +388,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Manejo del formulario de contacto
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const mensaje = document.getElementById('mensaje').value;
-    
-    // Validación simple
-    if (nombre && email && mensaje) {
-        // Simulación de envío exitoso
-        alert(`¡Gracias ${nombre}! Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto a ${email}.`);
-        
-        // Limpiar formulario
-        contactForm.reset();
-    } else {
-        alert('Por favor, completa todos los campos del formulario.');
-    }
-});
-
 // Animación de aparición al hacer scroll
 const observerOptions = {
     threshold: 0.1,
@@ -262,12 +418,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // Efecto parallax suave en el hero
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const heroContent = document.querySelector('.hero-content');
+    const slides = document.querySelectorAll('.slide');
     const leaves = document.querySelectorAll('.leaf');
     
-    if (heroContent) {
-        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
+    slides.forEach((slide, index) => {
+        const speed = 0.1 + (index * 0.05);
+        slide.style.transform = `translateY(${scrolled * speed}px)`;
+    });
     
     leaves.forEach((leaf, index) => {
         const speed = 0.1 + (index * 0.05);
